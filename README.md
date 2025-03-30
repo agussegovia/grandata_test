@@ -39,12 +39,12 @@ Total billing is : 452099.5
 Generate a dataset containing the IDs of the 100 users with the highest SMS billing and the total amount to be billed to each one. Generate a dataset containing the IDs of the 100 users with the highest SMS billing and the total amount to be billed to each one. In addition to the ID, include the ID hashed using the MD5 algorithm. Write the dataset in parquet format with gzip compression.
 gzip compression.
 
-[Dataset](C:\Users\IK\Desktop\Grandata_entrega\Documentation\top_100_bills.csv)
+[Dataset](top_100_bills.csv)
 
 ## Technical Part - Exercise 3
 Plot a histogram of the number of calls made per hour of the day.
 
-![Histogram](C:\Users\IK\Desktop\Grandata_entrega\Documentation\histogram.png)
+![Histogram](histogram.png)
 
 ## General Questions - Exercise 1
 Priorización de procesos
