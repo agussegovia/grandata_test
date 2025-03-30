@@ -16,7 +16,7 @@ services:
       - "SPARK_EXECUTOR_MEMORY=2g"
     volumes:
       - ./spark:/spark
-      - ./:/zeppelin/data  # Volumen para compartir con Zeppelin y Spark
+      - ./:/zeppelin/data  
 
   spark-worker-1:
     image: bde2020/spark-worker:2.3.0-hadoop2.7
@@ -30,7 +30,7 @@ services:
       - "SPARK_WORKER_MEMORY=2g"
       - "SPARK_EXECUTOR_MEMORY=2g"
     volumes:
-      - ./:/zeppelin/data  # Volumen para compartir con Zeppelin y Spark
+      - ./:/zeppelin/data  
 #############################################
 #               ZEPPELIN                    #
 #############################################
