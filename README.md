@@ -33,7 +33,7 @@ docker-compose up -d
 ## Technical Part - Exercise 1
 Calculate the total amount to be billed by the service provider for sending sms.
 
-Total billing is : 452099.5
+Total billing is : 391367.0
 
 ## Technical Part - Exercise 2
 Generate a dataset containing the IDs of the 100 users with the highest SMS billing and the total amount to be billed to each one. Generate a dataset containing the IDs of the 100 users with the highest SMS billing and the total amount to be billed to each one. In addition to the ID, include the ID hashed using the MD5 algorithm. Write the dataset in parquet format with gzip compression.
