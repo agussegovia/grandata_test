@@ -49,11 +49,11 @@ Plot a histogram of the number of calls made per hour of the day.
 ## General Questions - Exercise 1
 Priorización de procesos
 - Usar YARN para asignar colas con mayor prioridad a procesos productivos. Por ejemplo asignar un 70% de los recursos a producción y el restante 30% a los análisis exploratorios.
-- Limitar el uso de CPU y memoria en los trabajos exploratorios para evitar interferir con los procesos productivos.
-
+- Delimitar un ambiente productivo y uno no productivo, y segmentar las tareas asociadas a cada uno de los ambientes.
+ 
 Estrategia de ejecución para procesos productivos
 
-- Programar jobs pesados en horario no laboral
+- Programar jobs de alto consumo de recursos en horario no laboral.
 - Implementar escalado automático para ajustar los recursos según la carga.
 - Dividir procesos grandes en trabajos más pequeños para distribuir la carga.
 
@@ -64,15 +64,15 @@ YARN: Gestión de recursos con prioridades de colas.
 Las posibles causas del problema pueden llegar a ser:
 - Tabla mal particionada/sin particionar.
 - Falta de índices.
-- Formato ineficiente.
+- Formato de almacenamiento ineficiente.
 - Ejecución de queries en paralelo.
 - Existencia de small files.
 
 Posibles soluciones:
-- Verificar si existe la posibilidad de realizar el particionamiento de la tabla por criterios relevantes (fecha, región, etc.). Esto afectará ya que si uno quiere realizar un filtro, la query escaneará toda la tabla y luego filtrará, si existe una partición, se escanea solamente esta.
+- Verificar si existe la posibilidad de realizar el particionamiento de la tabla por criterios relevantes (fecha, región, etc.).
 - Corroborar el formato en el que se están escribiendo los archivos, migrar a formatos especializados en datos, como por ejemplo PARQUET. Implementar también un esquema de compressión de archivos, como por ejemplo Snappy.
 - Evitar realizar queries en paralelo hacia la misma tabla, ya que de esta manera se van a compartir los recursos dedicados.
-- Evitar la existencia de small files siempre que se pueda, haciendo un agrupamiento de los mismos para tener la menor cantidad de archivos posibles, es más fácil escanear un archivo de 100 MB, que 10 archivos de 10 MB.
+- Evitar la existencia de small files siempre que se pueda, haciendo un agrupamiento de los mismos para tener la menor cantidad de archivos posibles, es más eficiente escanear un archivo de 100 MB, que 10 archivos de 10 MB.
 - Evaluar la posibilidad de crear vistas materializadas, esto para el caso en el que se ejecuten queries de manera repetida, ya que permitiría tener ya pre-cargados los datos, facilitando su acceso.
 
 ## General Questions - Exercise 3 
@@ -88,7 +88,7 @@ spark.executor.cores = 3
 spark.driver.memory = 5g
 spark.yarn.executor.memoryOverhead = 2g
 spark.driver.memoryOverhead = 1g
-spark.dynamicAllocation.enabled = false 
+spark.dynamicAllocation.enabled = false
 ```
 Esta última opción sirve para este caso en particular en donde no se quiere exceder del límite de recursos fijados, otro enfoque un poco más dinámico podría ser utilizando:
 spark.dynamicAllocation.enabled = true y ajustar los parámetros de spark.dynamicAllocation.minExecutors y spark.dynamicAllocation.maxExecutors
